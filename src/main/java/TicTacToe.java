@@ -1,3 +1,6 @@
+import org.deeplearning4j.datasets.iterator.impl.EmnistDataSetIterator;
+import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
+
 import java.util.*;
 
 public class TicTacToe {
@@ -5,6 +8,14 @@ public class TicTacToe {
     static List<Integer> playerPosition = new ArrayList();
     static List<Integer> cpuPosition = new ArrayList();
     public static void main(String args[]){
+
+        EmnistDataSetIterator.Set eminetset = EmnistDataSetIterator.Set.BALANCED;
+        try{
+            EmnistDataSetIterator train = new EmnistDataSetIterator(eminetset, 128, true);
+            EmnistDataSetIterator test = new EmnistDataSetIterator(eminetset, 128, false);
+        }catch (Exception e){
+            System.out.println("Exception Occured");
+        }
 
         char[][] gameBoard = {{' ', '|',' ','|',' '},
                 {'-','+','-','+','-'},
